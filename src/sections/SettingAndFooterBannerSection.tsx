@@ -23,7 +23,7 @@ export const SettingAndFooterBannerSection: React.FC<SettingProps> = ({ onOpenMo
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4">
           
           {/* 3 Pillars in a row with separators */}
-          <div className="flex flex-col md:flex-row items-start md:items-center w-full md:w-[90%] gap-y-6 md:gap-y-0">
+          <div className="flex flex-col md:flex-row items-start md:items-center flex-1 gap-y-6 md:gap-y-0 md:pr-10 lg:pr-16">
             {settingHighlights.map((item, idx) => {
               const IconComp = SETTING_ICONS[item.icon] || Flower2;
               return (
@@ -50,14 +50,23 @@ export const SettingAndFooterBannerSection: React.FC<SettingProps> = ({ onOpenMo
           </div>
 
           {/* CTA Button replacing the QR code */}
-          <div className="w-full md:w-auto flex justify-center md:justify-end mt-4 md:mt-0">
+          <div className="w-full md:w-auto flex justify-center md:justify-end mt-8 md:mt-0 flex-shrink-0">
             <button
               onClick={onOpenModal}
-              className="relative overflow-hidden group bg-[#C5A44E] text-[#0E2823] px-6 py-4 rounded-xl font-bold font-serif uppercase tracking-widest shadow-[0_0_20px_rgba(197,164,78,0.4)] hover:shadow-[0_0_30px_rgba(197,164,78,0.6)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
+              className="relative overflow-hidden rounded-xl p-[2px] shadow-[0_0_20px_rgba(197,164,78,0.5)] hover:shadow-[0_0_30px_rgba(197,164,78,0.7)] hover:-translate-y-1 transition-all duration-300 flex items-center justify-center"
+              style={{ backgroundColor: "#8A6B32" }}
             >
-              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
-              <span className="relative z-10 whitespace-nowrap">Apply Now</span>
-              <Sparkles className="w-5 h-5 relative z-10 animate-pulse" strokeWidth={2} />
+              <div 
+                className="absolute inset-[-400%] animate-spin opacity-80"
+                style={{ 
+                  background: "conic-gradient(from 0deg, transparent 20%, rgba(255,255,255,0.9) 50%, transparent 80%)", 
+                  animationDuration: '4s',
+                  animationTimingFunction: 'linear'
+                }}
+              />
+              <span className="relative w-full h-full bg-[#C5A44E] text-[#0E2823] px-10 py-4 rounded-[10px] font-bold font-serif uppercase tracking-widest whitespace-nowrap z-10 flex items-center justify-center">
+                APPLY NOW
+              </span>
             </button>
           </div>
 
