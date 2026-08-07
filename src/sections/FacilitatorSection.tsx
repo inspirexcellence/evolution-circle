@@ -15,11 +15,11 @@ export const FacilitatorSection: React.FC = () => {
     <div className="relative rounded-2xl bg-white/40 backdrop-blur-sm border border-[#1A3B2F]/10 mt-4 overflow-hidden flex flex-col sm:flex-row shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.12)] hover:z-10 transition-all duration-400">
       
       {/* Left: Full-height Image */}
-      <div className="relative w-full sm:w-[180px] md:w-[200px] h-[220px] sm:h-auto flex-shrink-0">
+      <div className="relative w-full sm:w-[180px] md:w-[200px] h-[280px] sm:h-auto flex-shrink-0">
         <img
           src="/images/about.jpeg"
           alt="Prerona Roy"
-          className="w-full h-full scale-90  object-cover"
+          className="w-full h-full object-cover object-top"
         />
       </div>
 
