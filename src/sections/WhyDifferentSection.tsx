@@ -51,7 +51,7 @@ export const WhyDifferentSection: React.FC = () => {
           className="text-center -mt-2 mb-4"
         >
           <p className="text-[14px] sm:text-[15px] text-[#E8E2D4]/90 font-serif italic tracking-wide">
-            The results you will experience with time
+            The results you will experience in few weeks
           </p>
         </motion.div>
 

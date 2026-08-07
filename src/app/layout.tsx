@@ -66,23 +66,14 @@ export const metadata: Metadata = {
     description:
       "A One-Day Immersive Experience for Coaches, Consultants, Trainers, and Professional Practitioners. Only 15 Practitioners Selected.",
     siteName: "The Evolution Circle",
-    images: [
-      {
-        url: "https://evolutioncircle.inspirexcellence.org/images/image.png",
-        width: 1200,
-        height: 630,
-        alt: "The Evolution Circle Executive Experience",
-      },
-    ],
+   
   },
   twitter: {
     card: "summary_large_image",
     title: "The Evolution Circle | Inspire Excellence",
     description:
       "Step into a curated space of transformation, clarity and strategic breakthroughs. Facilitated by Prerona Roy.",
-    images: [
-      "https://evolutioncircle.inspirexcellence.org/images/image.png",
-    ],
+    
   },
 };
 

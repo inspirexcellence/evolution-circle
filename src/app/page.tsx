@@ -69,6 +69,27 @@ export default function Home() {
       {/* Footer */}
       <Footer />
 
+      {/* Sticky Floating Apply Button */}
+      <div className="fixed bottom-5 right-5 sm:bottom-8 sm:right-8 z-50">
+        <button
+          onClick={handleOpenModal}
+          className="relative overflow-hidden rounded-full p-[2px] shadow-[0_0_25px_rgba(197,164,78,0.6)] hover:shadow-[0_0_35px_rgba(197,164,78,0.8)] hover:scale-105 transition-all duration-300 flex items-center justify-center animate-bounce"
+          style={{ backgroundColor: "#8A6B32", animationDuration: "2.5s" }}
+        >
+          <div 
+            className="absolute inset-[-400%] animate-spin opacity-80"
+            style={{ 
+              background: "conic-gradient(from 0deg, transparent 20%, rgba(255,255,255,0.9) 50%, transparent 80%)", 
+              animationDuration: '3s',
+              animationTimingFunction: 'linear'
+            }}
+          />
+          <span className="relative w-full h-full bg-[#C5A44E] text-[#0E2823] px-6 py-3.5 rounded-full font-bold font-serif uppercase tracking-widest whitespace-nowrap z-10 flex items-center justify-center text-[13px] md:text-[14px]">
+            APPLY NOW
+          </span>
+        </button>
+      </div>
+
       {/* Application Form Modal */}
       <ApplicationModal isOpen={isModalOpen} onClose={handleCloseModal} />
     </main>
