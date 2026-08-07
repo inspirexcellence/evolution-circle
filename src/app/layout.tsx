@@ -68,7 +68,7 @@ export const metadata: Metadata = {
     siteName: "The Evolution Circle",
     images: [
       {
-        url: "https://evolutioncircle.inspirexcellence.org/_next/image?url=%2Fimages%2Fimage.png&w=1200&q=75",
+        url: "https://evolutioncircle.inspirexcellence.org/images/image.png",
         width: 1200,
         height: 630,
         alt: "The Evolution Circle Executive Experience",
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     description:
       "Step into a curated space of transformation, clarity and strategic breakthroughs. Facilitated by Prerona Roy.",
     images: [
-      "https://evolutioncircle.inspirexcellence.org/_next/image?url=%2Fimages%2Fimage.png&w=1200&q=75",
+      "https://evolutioncircle.inspirexcellence.org/images/image.png",
     ],
   },
 };
@@ -104,7 +104,7 @@ const jsonLdEvent = {
     },
   },
   image: [
-    "https://evolutioncircle.inspirexcellence.org/_next/image?url=%2Fimages%2Fimage.png&w=1200&q=75",
+    "https://evolutioncircle.inspirexcellence.org/images/image.png",
   ],
   description:
     "A curated 1-day space of transformation, clarity and strategic breakthroughs for coaches, consultants, trainers, healers, and professional practitioners.",
