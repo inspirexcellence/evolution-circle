@@ -31,6 +31,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://evolutioncircle.inspirexcellence.org"),
   title: "The Evolution Circle | Inspire Excellence — One-Day Executive Immersive Experience",
   description:
     "Step into a curated space of transformation, clarity and strategic breakthroughs for coaches, consultants, trainers, healers, and professional practitioners. Facilitated by Prerona Roy. 15 Practitioners Selected.",
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
     "Transformational Mastermind",
     "Coaching Circle",
   ],
-  authors: [{ name: "Prerona Roy", url: "https://inspireexcellence.in" }],
+  authors: [{ name: "Prerona Roy", url: "https://inspirexcellence.org" }],
   creator: "Inspire Excellence",
   publisher: "Inspire Excellence",
   robots: {
@@ -60,14 +61,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://theevolutioncircle.com",
+    url: "https://evolutioncircle.inspirexcellence.org",
     title: "The Evolution Circle | Inspire Excellence",
     description:
       "A One-Day Immersive Experience for Coaches, Consultants, Trainers, and Professional Practitioners. Only 15 Practitioners Selected.",
     siteName: "The Evolution Circle",
     images: [
       {
-        url: "/images/image.png",
+        url: "https://evolutioncircle.inspirexcellence.org/_next/image?url=%2Fimages%2Fimage.png&w=1200&q=75",
         width: 1200,
         height: 630,
         alt: "The Evolution Circle Executive Experience",
@@ -80,7 +81,7 @@ export const metadata: Metadata = {
     description:
       "Step into a curated space of transformation, clarity and strategic breakthroughs. Facilitated by Prerona Roy.",
     images: [
-      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop",
+      "https://evolutioncircle.inspirexcellence.org/_next/image?url=%2Fimages%2Fimage.png&w=1200&q=75",
     ],
   },
 };
@@ -103,14 +104,14 @@ const jsonLdEvent = {
     },
   },
   image: [
-    "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop",
+    "https://evolutioncircle.inspirexcellence.org/_next/image?url=%2Fimages%2Fimage.png&w=1200&q=75",
   ],
   description:
     "A curated 1-day space of transformation, clarity and strategic breakthroughs for coaches, consultants, trainers, healers, and professional practitioners.",
   organizer: {
     "@type": "Organization",
     name: "Inspire Excellence",
-    url: "https://inspireexcellence.in",
+    url: "https://inspirexcellence.org",
   },
   performer: {
     "@type": "Person",
@@ -123,7 +124,7 @@ const jsonLdEvent = {
     priceCurrency: "INR",
     availability: "https://schema.org/LimitedAvailability",
     validFrom: "2026-08-01",
-    url: "https://theevolutioncircle.com",
+    url: "https://evolutioncircle.inspirexcellence.org",
   },
 };
 
@@ -131,7 +132,7 @@ const jsonLdOrganization = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "Inspire Excellence",
-  url: "https://inspireexcellence.in",
+  url: "https://inspirexcellence.org",
   logo: "https://theevolutioncircle.com/logo.png",
   founder: {
     "@type": "Person",
