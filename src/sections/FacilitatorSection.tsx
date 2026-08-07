@@ -17,9 +17,9 @@ export const FacilitatorSection: React.FC = () => {
       {/* Left: Full-height Image */}
       <div className="relative w-full sm:w-[180px] md:w-[200px] h-[220px] sm:h-auto flex-shrink-0">
         <img
-          src="https://fci.inspirexcellence.org/host.png"
+          src="/images/about.jpeg"
           alt="Prerona Roy"
-          className="w-full h-full object-cover"
+          className="w-full h-full scale-90  object-cover"
         />
       </div>
 

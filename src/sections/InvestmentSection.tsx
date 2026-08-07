@@ -41,7 +41,7 @@ export const InvestmentSection: React.FC = () => {
               ₹100
             </div>
             <p className="text-[13px] sm:text-[14px] text-[#2D3D35] font-serif italic mt-1">
-              Fully refunded if selected.
+              Fully refunded if not selected.
             </p>
           </div>
 

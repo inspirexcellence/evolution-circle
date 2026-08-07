@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     siteName: "The Evolution Circle",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop",
+        url: "/images/image.png",
         width: 1200,
         height: 630,
         alt: "The Evolution Circle Executive Experience",

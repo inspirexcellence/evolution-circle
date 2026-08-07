@@ -25,33 +25,28 @@ export const SITE_CONTENT = {
     problems: [
       {
         id: "1",
-        icon: "Users",
-        text: "Attract the same type of clients.",
+        icon: "Star",
+        text: "Attract premium clients and meaningful opportunities.",
       },
       {
         id: "2",
-        icon: "Repeat",
-        text: "Repeat the same patterns and problems.",
+        icon: "Zap",
+        text: "Gain a clear vision for your next chapter.",
       },
       {
         id: "3",
-        icon: "Hourglass",
-        text: "Undercharge your value and limit your potential.",
+        icon: "Compass",
+        text: "Increase your earning potential, influence and impact.",
       },
       {
         id: "4",
-        icon: "Flower2",
-        text: "Seek validation instead of inner certainty.",
+        icon: "Users2",
+        text: "Build relationships that challenge, support and elevate you.",
       },
       {
         id: "5",
-        icon: "TrendingUp",
-        text: "Grow slower than your potential.",
-      },
-      {
-        id: "6",
-        icon: "Target",
-        text: "Teach transformation without fully embodying it.",
+        icon: "Flower2",
+        text: "Experience greater fulfilment, inner peace and lasting success.",
       },
     ],
     quoteBox: {
@@ -176,7 +171,7 @@ export const SITE_CONTENT = {
       },
       {
         icon: "Zap",
-        text: "A unique blend of strategy, psychology and transformational coaching",
+        text: "A unique blend of strategy, psychology, neuroscience and transformational coaching",
       },
     ],
   },

@@ -45,7 +45,7 @@ export const TargetAudienceAndUnlockSection: React.FC = () => {
 
       {/* ═══ CARD 2: WHAT YOU WILL UNLOCK ═══ */}
       <div className="relative rounded-2xl p-8 lg:p-10 bg-white/40 backdrop-blur-sm border border-[#1A3B2F]/10 flex flex-col justify-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.12)] hover:z-10 transition-all duration-400">
-        <h3 className="font-serif text-[14px] sm:text-[15px] font-bold uppercase tracking-wider mb-6 text-[#1A3B2F] text-center">
+        <h3 className="font-serif text-[14px] sm:text-[15px] font-bold uppercase tracking-wider mb-6 text-[#8A6B32] text-center">
           WHAT YOU WILL UNLOCK
         </h3>
 

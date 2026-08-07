@@ -105,7 +105,7 @@ export const HeroSection: React.FC = () => {
             <br />
             clarity and strategic breakthroughs that
             <br />
-            elevate how you lead, serve and live.
+            elevate how you lead, serve and build your business as a professional.
           </p>
         </div>
       </motion.div>

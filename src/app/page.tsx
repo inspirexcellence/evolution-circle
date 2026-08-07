@@ -64,7 +64,7 @@ export default function Home() {
       </section>
 
       {/* Setting Highlights, QR Code & Footer Banner */}
-      <SettingAndFooterBannerSection />
+      <SettingAndFooterBannerSection onOpenModal={handleOpenModal} />
 
       {/* Footer */}
       <Footer />

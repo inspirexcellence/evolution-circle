@@ -4,23 +4,21 @@ import React from "react";
 import { motion } from "framer-motion";
 import { SITE_CONTENT } from "@/constants/content";
 import {
-  Users,
-  Repeat,
-  Hourglass,
   Flower2,
-  TrendingUp,
-  Target,
   Calendar,
   Sparkles,
+  Star,
+  Zap,
+  Compass,
+  Users2
 } from "lucide-react";
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string, strokeWidth?: number }>> = {
-  Users,
-  Repeat,
-  Hourglass,
+  Star,
+  Zap,
+  Compass,
+  Users2,
   Flower2,
-  TrendingUp,
-  Target,
 };
 
 export const WhyDifferentSection: React.FC = () => {
@@ -45,6 +43,18 @@ export const WhyDifferentSection: React.FC = () => {
           <div className="h-[1px] flex-grow bg-[#C5A44E]/30 max-w-[200px]" />
         </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="text-center -mt-2 mb-4"
+        >
+          <p className="text-[14px] sm:text-[15px] text-[#E8E2D4]/90 font-serif italic tracking-wide">
+            The results you will experience with time—
+          </p>
+        </motion.div>
+
         {/* 2. GRID LAYOUT */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -53,21 +63,22 @@ export const WhyDifferentSection: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col w-full"
         >
-          {/* Top Row: 6 Items */}
-          <div className="grid grid-cols-2 md:grid-cols-6 border-b border-[#C5A44E]/30 pb-4">
+          {/* Top Row: 5 Items */}
+          <div className="flex flex-wrap justify-center w-full border-b border-[#C5A44E]/30 pb-4">
             {whyDifferent.problems.map((item, idx) => {
               const IconComponent = ICON_MAP[item.icon] || Sparkles;
               return (
                 <div 
                   key={item.id} 
-                  className={`flex flex-col items-center text-center px-1 sm:px-3 ${
-                    idx < 5 ? 'md:border-r border-[#C5A44E]/30' : ''
-                  } ${
-                    idx % 2 === 0 ? 'border-r border-[#C5A44E]/30 md:border-r' : ''
-                  } mb-4 md:mb-0`}
+                  className="flex flex-col items-center text-center px-2 mb-6"
+                  style={{
+                    flex: "1 1 150px",
+                    maxWidth: "100%",
+                    borderRight: idx !== whyDifferent.problems.length - 1 ? "1px solid rgba(197, 164, 78, 0.3)" : "none",
+                  }}
                 >
-                  <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-[#C5A44E] mb-1.5" strokeWidth={1.2} />
-                  <p className="text-[11px] sm:text-[13px] text-[#E8E2D4] leading-tight max-w-[140px]">
+                  <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-[#C5A44E] mb-2" strokeWidth={1.2} />
+                  <p className="text-[12px] sm:text-[13px] text-[#E8E2D4] leading-tight max-w-[150px]">
                     {item.text}
                   </p>
                 </div>

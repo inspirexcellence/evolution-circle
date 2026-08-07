@@ -10,7 +10,11 @@ const SETTING_ICONS: Record<string, React.ComponentType<{ className?: string, st
   Sparkles,
 };
 
-export const SettingAndFooterBannerSection: React.FC = () => {
+interface SettingProps {
+  onOpenModal?: () => void;
+}
+
+export const SettingAndFooterBannerSection: React.FC<SettingProps> = ({ onOpenModal }) => {
   const { settingHighlights, footerBanner } = SITE_CONTENT;
 
   return (
@@ -45,11 +49,16 @@ export const SettingAndFooterBannerSection: React.FC = () => {
             })}
           </div>
 
-          {/* QR Code on the far right */}
-          <div className="w-full md:w-[10%] flex justify-center md:justify-end">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-lg p-2 sm:p-2.5 flex-shrink-0">
-              <QrCode className="w-full h-full text-[#0E2823]" strokeWidth={1.2} />
-            </div>
+          {/* CTA Button replacing the QR code */}
+          <div className="w-full md:w-auto flex justify-center md:justify-end mt-4 md:mt-0">
+            <button
+              onClick={onOpenModal}
+              className="relative overflow-hidden group bg-[#C5A44E] text-[#0E2823] px-6 py-4 rounded-xl font-bold font-serif uppercase tracking-widest shadow-[0_0_20px_rgba(197,164,78,0.4)] hover:shadow-[0_0_30px_rgba(197,164,78,0.6)] hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
+            >
+              <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out" />
+              <span className="relative z-10 whitespace-nowrap">Apply Now</span>
+              <Sparkles className="w-5 h-5 relative z-10 animate-pulse" strokeWidth={2} />
+            </button>
           </div>
 
         </div>

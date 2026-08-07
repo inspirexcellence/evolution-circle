@@ -144,30 +144,6 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
     }
   };
 
-  const handleQRPaymentSubmit = async () => {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetch("/api/submit-application", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...formData,
-          paymentMethod: "Manual QR Scan",
-          paymentId: "PENDING_VERIFICATION",
-        }),
-      });
-
-      if (!res.ok) throw new Error("Failed to submit details");
-      
-      setSuccess(true);
-    } catch (err: any) {
-      setError(err.message || "An unexpected error occurred.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
       <div className="relative w-full max-w-lg bg-[#EDE7DB] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] overflow-y-auto">
@@ -295,23 +271,6 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
                     {loading ? "Processing..." : "Pay ₹100 via Razorpay"}
                   </button>
 
-                  <div className="relative flex items-center py-2">
-                    <div className="flex-grow border-t border-[#1A3B2F]/20"></div>
-                    <span className="flex-shrink-0 mx-4 text-[#1A3B2F]/40 text-[10px] font-bold uppercase tracking-widest">or</span>
-                    <div className="flex-grow border-t border-[#1A3B2F]/20"></div>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={handleQRPaymentSubmit}
-                    disabled={loading || !isFormValid}
-                    className="w-full bg-transparent border-2 border-[#1A3B2F] text-[#1A3B2F] font-bold uppercase tracking-widest py-3 rounded-lg hover:bg-[#1A3B2F]/5 transition-colors text-[12px] disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    I have already paid via QR
-                  </button>
-                  <p className="text-[10px] text-center text-[#1A3B2F]/60 mt-2 uppercase tracking-widest leading-relaxed">
-                    If paying by QR, please fill out this form first to submit your details
-                  </p>
                 </div>
               </form>
             </div>
