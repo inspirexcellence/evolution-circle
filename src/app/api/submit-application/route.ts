@@ -5,9 +5,9 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { name, phone, email, profession, companyName, paymentMethod, paymentId } = body;
 
-    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+    const accessKey = process.env.WEB3FORMS_ACCESS_KEY || "e65f40b5-1230-4d95-838c-b66543c6c2b1";
 
-    if (accessKey && accessKey !== "YOUR_WEB3FORMS_ACCESS_KEY_HERE") {
+    if (accessKey) {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
