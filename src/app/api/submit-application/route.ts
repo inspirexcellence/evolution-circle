@@ -30,8 +30,9 @@ export async function POST(req: NextRequest) {
       });
 
       if (!response.ok) {
-        const errorData = await response.json();
-        console.error("Web3Forms error:", errorData);
+        const errorText = await response.text();
+        console.error("Web3Forms API Error:", response.status, errorText);
+        throw new Error(`Web3Forms rejected the request: ${response.status}`);
       } else {
         console.log("Application details sent via Web3Forms.");
       }
