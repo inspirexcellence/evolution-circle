@@ -13,6 +13,9 @@ import { SettingAndFooterBannerSection } from "@/sections/SettingAndFooterBanner
 import { Footer } from "@/components/Footer";
 import { ApplicationModal } from "@/components/ApplicationModal";
 import { CuratedExperienceCard } from "@/sections/CuratedExperienceCard";
+import { FAQSection } from "@/sections/FAQSection";
+import { TrustedBySection } from "@/sections/TrustedBySection";
+import { TestimonialSection } from "@/sections/TestimonialSection";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,6 +29,9 @@ export default function Home() {
 
       {/* Hero Section */}
       <HeroSection />
+
+      {/* Trusted By Placeholder */}
+      <TrustedBySection />
 
       {/* Why This Circle Is Different + Quote & Event Metadata */}
       <WhyDifferentSection />
@@ -62,6 +68,12 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Video */}
+      <TestimonialSection />
+
+      {/* FAQ Section */}
+      <FAQSection />
 
       {/* Setting Highlights, QR Code & Footer Banner */}
       <SettingAndFooterBannerSection onOpenModal={handleOpenModal} />

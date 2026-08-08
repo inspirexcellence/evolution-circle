@@ -29,6 +29,13 @@ export const InvestmentSection: React.FC = () => {
             <p className="text-[12px] sm:text-[13px] text-[#2D3D35] font-medium px-4 leading-relaxed">
               (Inclusive of all session materials, workbook, refreshments & integration tools)
             </p>
+            <div className="mt-5 inline-flex items-center gap-2 bg-[#8A6B32]/10 px-4 py-2 rounded-full border border-[#8A6B32]/20">
+              <svg className="w-4 h-4 text-[#8A6B32]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span className="text-[12px] font-bold text-[#1A3B2F] uppercase tracking-widest">Kolkata, India</span>
+            </div>
           </div>
 
           <div className="h-[1px] w-[80%] mx-auto bg-[#1A3B2F]/15 my-5" />

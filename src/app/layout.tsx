@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Lora, Inter, Cormorant_Garamond } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const lora = Lora({
@@ -139,6 +140,36 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${lora.variable} ${inter.variable} ${quoteFont.variable}`}>
       <head>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-JWVFFCGEM9"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-JWVFFCGEM9');
+          `}
+        </Script>
+        
+        {/* Meta Pixel Code */}
+        <Script id="meta-pixel" strategy="afterInteractive">
+          {`
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '1080945464371822');
+            fbq('track', 'PageView');
+          `}
+        </Script>
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdEvent) }}
@@ -151,6 +182,11 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased bg-forest-950 text-warmWhite font-sans">
+        <noscript>
+          <img height="1" width="1" style={{ display: "none" }}
+          src="https://www.facebook.com/tr?id=1080945464371822&ev=PageView&noscript=1"
+          />
+        </noscript>
         {children}
       </body>
     </html>
