@@ -109,15 +109,27 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
         order_id: order.id,
         handler: async function (response: any) {
           // Success callback - Send email notification
-          await fetch("/api/submit-application", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              ...formData,
-              paymentMethod: "Razorpay Gateway",
-              paymentId: response.razorpay_payment_id,
-            }),
-          });
+          // Success callback - Send email notification directly from browser to bypass Cloudflare
+          const emailData = new FormData();
+          emailData.append("access_key", "e65f40b5-1230-4d95-838c-b66543c6c2b1");
+          emailData.append("subject", `New Circle Application: ${formData.name}`);
+          emailData.append("from_name", "Inspire Excellence Portal");
+          emailData.append("Applicant_Name", formData.name);
+          emailData.append("Phone_Number", formData.phone);
+          emailData.append("Email_Address", formData.email);
+          emailData.append("Profession", formData.profession);
+          emailData.append("Company_Name", formData.companyName);
+          emailData.append("Payment_Method", "Razorpay Gateway");
+          emailData.append("Payment_ID", response.razorpay_payment_id);
+
+          try {
+            await fetch("https://api.web3forms.com/submit", {
+              method: "POST",
+              body: emailData
+            });
+          } catch (emailErr) {
+            console.error("Email send failed, but payment succeeded", emailErr);
+          }
           setSuccess(true);
         },
         prefill: {
