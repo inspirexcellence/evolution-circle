@@ -45,7 +45,7 @@ export const InvestmentSection: React.FC = () => {
               APPLICATION FEE
             </p>
             <div className="font-serif text-[38px] sm:text-[44px] leading-none text-[#1A3B2F] mb-2 font-medium">
-              ₹100
+              ₹0
             </div>
             <p className="text-[13px] sm:text-[14px] text-[#2D3D35] font-serif italic mt-1">
               Fully refunded if not selected.

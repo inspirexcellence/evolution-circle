@@ -82,6 +82,35 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
     setLoading(true);
     setError(null);
 
+    // TEMPORARY ZERO PRICE TEST BYPASS
+    const isFreeTest = true;
+    if (isFreeTest) {
+      try {
+        const emailData = new FormData();
+        emailData.append("access_key", "e65f40b5-1230-4d95-838c-b66543c6c2b1");
+        emailData.append("subject", `New Circle Application: ${formData.name}`);
+        emailData.append("from_name", "The Evolution Circle - Inspire Excellence");
+        emailData.append("Applicant_Name", formData.name);
+        emailData.append("Phone_Number", formData.phone);
+        emailData.append("Email_Address", formData.email);
+        emailData.append("Profession", formData.profession);
+        emailData.append("Company_Name", formData.companyName);
+        emailData.append("Payment_Method", "Test Mode (Free)");
+        emailData.append("Payment_ID", "test_00000000");
+
+        await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: emailData
+        });
+        setSuccess(true);
+      } catch (err: any) {
+        setError("Failed to submit: " + err.message);
+      } finally {
+        setLoading(false);
+      }
+      return;
+    }
+
     try {
       // 1. Create an Order on the backend
       const res = await fetch("/api/razorpay/order", {
@@ -280,7 +309,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
                     disabled={loading || !isFormValid}
                     className="w-full bg-[#0E2823] text-[#C5A44E] font-serif font-bold uppercase tracking-widest py-3.5 rounded-lg hover:bg-[#133731] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg"
                   >
-                    {loading ? "Processing..." : "Pay ₹100 via Razorpay"}
+                    {loading ? "Processing..." : "Submit Application"}
                   </button>
 
                 </div>
