@@ -108,7 +108,9 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
         description: "Application Fee for The Evolution Circle",
         order_id: order.id,
         handler: async function (response: any) {
-          // Success callback - Send email notification
+          // Immediately show success to prevent form flash while email sends
+          setSuccess(true);
+          
           // Success callback - Send email notification directly from browser to bypass Web3Forms server blocks
           const emailData = new FormData();
           emailData.append("access_key", "e65f40b5-1230-4d95-838c-b66543c6c2b1");
@@ -130,7 +132,6 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
           } catch (emailErr) {
             console.error("Email send failed, but payment succeeded", emailErr);
           }
-          setSuccess(true);
         },
         prefill: {
           name: formData.name,
@@ -160,13 +161,15 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
       <div className="relative w-full max-w-lg bg-[#EDE7DB] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] overflow-y-auto">
         
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 z-20 p-2 bg-white text-[#1A3B2F] hover:bg-gray-100 rounded-full shadow-md transition-all border border-gray-200"
-        >
-          <X className="w-5 h-5" />
-        </button>
+        {/* Close Button (Hidden on Success) */}
+        {!success && (
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 z-20 p-2 bg-white text-[#1A3B2F] hover:bg-gray-100 rounded-full shadow-md transition-all border border-gray-200"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        )}
 
         {success ? (
           <div className="w-full p-10 flex flex-col items-center justify-center text-center bg-white/40">
@@ -177,12 +180,22 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
             <p className="text-[#2D3D35] mb-6">
               Thank you for applying. We have received your details and payment information.
             </p>
-            <button
-              onClick={onClose}
-              className="bg-[#0E2823] text-[#C5A44E] font-serif font-bold uppercase tracking-widest px-8 py-3 rounded-lg hover:bg-[#133731] transition-colors"
-            >
-              Close Window
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 mt-2">
+              <a
+                href="https://chat.whatsapp.com/your-community-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#25D366] text-white font-sans font-bold uppercase tracking-wide px-6 py-3 rounded-lg hover:bg-[#20BD5A] transition-colors flex items-center justify-center gap-2"
+              >
+                Join WhatsApp Community
+              </a>
+              <button
+                onClick={onClose}
+                className="bg-[#0E2823] text-[#C5A44E] font-serif font-bold uppercase tracking-widest px-8 py-3 rounded-lg hover:bg-[#133731] transition-colors"
+              >
+                Close Window
+              </button>
+            </div>
           </div>
         ) : (
           <>

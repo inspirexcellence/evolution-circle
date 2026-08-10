@@ -4,7 +4,16 @@ import React from "react";
 
 export const TrustedBySection: React.FC = () => {
   return (
-    <section className="bg-[#EDE7DB] border-b border-[#1A3B2F]/10 pt-10 pb-2">
+    <section className="bg-[#EDE7DB] relative z-10 pb-2">
+      {/* Decorative Dotted Separation */}
+      <div className="w-full flex items-center justify-center pt-16 pb-16">
+        <div className="w-full max-w-5xl flex items-center justify-center gap-4 px-4 sm:px-6">
+          <div className="h-[2px] flex-1 border-t-2 border-dotted border-[#8A6B32]/30"></div>
+          <div className="w-2 h-2 rotate-45 bg-[#8A6B32]/40"></div>
+          <div className="h-[2px] flex-1 border-t-2 border-dotted border-[#8A6B32]/30"></div>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-6">
           <p className="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.2em] text-[#8A6B32]">
