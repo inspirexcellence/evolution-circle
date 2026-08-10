@@ -76,11 +76,14 @@ export const HeroSection: React.FC = () => {
         <div className="w-[50px] sm:w-[60px] h-[2px] bg-[#8A6B32] mb-5" />
 
         {/* Date of Event */}
-        <div className="mb-5 inline-flex items-center gap-2 bg-[#8A6B32]/10 border border-[#8A6B32]/20 px-4 py-2 rounded-full self-start">
-          <svg className="w-4 h-4 text-[#8A6B32]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div className="relative overflow-hidden mb-5 inline-flex items-center gap-2 bg-[#8A6B32]/10 border border-[#8A6B32]/20 px-4 py-2 rounded-full self-start">
+          {/* Shimmer Effect */}
+          <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/50 to-transparent w-full h-full pointer-events-none" style={{ transform: "skewX(-20deg)" }} />
+          
+          <svg className="w-4 h-4 text-[#8A6B32] relative z-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
-          <span className="text-[12px] font-bold text-[#1A3B2F] uppercase tracking-widest">September 12, 2026</span>
+          <span className="text-[12px] font-bold text-[#1A3B2F] uppercase tracking-widest relative z-10">September 12, 2026</span>
         </div>
 
         {/* Audience line */}
