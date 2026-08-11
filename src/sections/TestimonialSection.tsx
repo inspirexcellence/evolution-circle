@@ -53,7 +53,7 @@ export const TestimonialSection: React.FC = () => {
           {/* Embedded Video */}
           <video 
             ref={videoRef}
-            src="https://res.cloudinary.com/bckdihv8/video/upload/v1786425969/Testemonial_C3_1_xirh9p.mp4"
+            src="https://res.cloudinary.com/bckdihv8/video/upload/Testemonial_C6_1_xplh6f.mp4"
             className="absolute inset-0 w-full h-full object-cover"
             controls
             playsInline
