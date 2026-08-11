@@ -88,7 +88,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          amount: 1, // ₹1 for Razorpay testing minimum
+          amount: 100, // ₹100 Application Fee
           ...formData,
         }),
       });
@@ -293,7 +293,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
                     disabled={loading || !isFormValid}
                     className="w-full bg-[#0E2823] text-[#C5A44E] font-serif font-bold uppercase tracking-widest py-3.5 rounded-lg hover:bg-[#133731] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg"
                   >
-                    {loading ? "Processing..." : "Pay ₹1 via Razorpay"}
+                    {loading ? "Processing..." : "Pay ₹100 via Razorpay"}
                   </button>
 
                 </div>
