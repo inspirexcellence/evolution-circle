@@ -15,10 +15,11 @@ export const TrustedBySection: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-6">
-          <p className="text-[12px] md:text-[13px] font-bold uppercase tracking-[0.2em] text-[#8A6B32]">
-            TRUSTED BY LEADERS FROM
-          </p>
+        <div className="text-center mb-10">
+          <h2 className="font-serif text-[28px] md:text-[36px] font-medium text-[#1A3B2F] mb-4">
+            Trusted By Leaders From
+          </h2>
+          <div className="h-[2px] w-[60px] bg-[#8A6B32] mx-auto" />
         </div>
       </div>
       

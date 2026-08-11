@@ -17,7 +17,7 @@ export const FAQSection: React.FC = () => {
     },
     {
       question: "Who is the Evolution Circle for?",
-      answer: "It is designed exclusively for Founders, CEOs, and senior executives who are looking for high-level networking, deep reflection, and transformative business growth in a confidential setting."
+      answer: "It is designed exclusively for Coaches, Consultants, Trainers, Healers, Professional Practitioners, Solopreneurs, and Small Business Owners who are looking for high-level networking, deep reflection, and transformative business growth in a confidential setting."
     },
     {
       question: "What if I am not selected for this cohort?",

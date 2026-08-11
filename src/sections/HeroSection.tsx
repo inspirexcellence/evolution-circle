@@ -91,9 +91,11 @@ export const HeroSection: React.FC = () => {
           className="text-[15px] sm:text-[16px] lg:text-[18px] font-normal leading-relaxed mb-5"
           style={{ color: "#2D3D35", fontFamily: "'Inter', sans-serif" }}
         >
-          For Coaches. Consultants. Trainers.
+          For Coaches. Consultants. Trainers. Healers.
           <br />
-          Healers. Professional Practitioners.
+          Professional Practitioners. Solopreneurs.
+          <br />
+          Small Business Owners.
         </p>
 
         {/* Italic callout — NO card/box, just text */}
