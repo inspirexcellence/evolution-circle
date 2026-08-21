@@ -58,12 +58,17 @@ const config: Config = {
         shimmer: {
           '0%': { transform: 'translateX(-100%)' },
           '100%': { transform: 'translateX(100%)' },
+        },
+        pop: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.08)' },
         }
       },
       animation: {
         marquee: 'marquee 40s linear infinite',
         'marquee-reverse': 'marquee-reverse 40s linear infinite',
         shimmer: 'shimmer 3s infinite linear',
+        pop: 'pop 2.5s ease-in-out infinite',
       }
     },
   },

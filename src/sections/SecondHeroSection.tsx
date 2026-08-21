@@ -5,7 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { SITE_CONTENT } from "@/constants/content";
 
-export const HeroSection: React.FC = () => {
+export const SecondHeroSection: React.FC = () => {
   const { brand, hero } = SITE_CONTENT;
 
   return (
@@ -91,25 +91,11 @@ export const HeroSection: React.FC = () => {
           className="text-[15px] sm:text-[16px] lg:text-[18px] font-normal leading-relaxed mb-5"
           style={{ color: "#2D3D35", fontFamily: "'Inter', sans-serif" }}
         >
-          For Coaches. Consultants. Trainers. Healers.
-          <br />
-          Professional Practitioners. Solopreneurs.
-          <br />
-          Small Business Owners.
+          Established coaches, consultants, trainers and expert-led service founders whose income and business growth no longer reflect their capability.
         </p>
 
         {/* Italic callout — NO card/box, just text */}
         <div className="space-y-3">
-          <p
-            className="font-serif text-[16px] sm:text-[18px] lg:text-[19px] italic leading-snug"
-            style={{ color: "#2D3D35" }}
-          >
-            This is not about learning more.
-            <br />
-            <span style={{ color: "#8A6B32" }} className="font-semibold">
-              It&apos;s about becoming more.
-            </span>
-          </p>
           <p
             className="font-serif text-[15px] sm:text-[16px] lg:text-[18px] italic leading-relaxed"
             style={{ color: "#3D4D45" }}
