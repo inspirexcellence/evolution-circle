@@ -8,10 +8,6 @@ export const FAQSection: React.FC = () => {
 
   const faqs = [
     {
-      question: "What happens to the ₹100 application fee?",
-      answer: "If you are selected for the Circle, this ₹100 fee will be fully adjusted and deducted from your final package. If you are not selected, the fee is 100% refunded immediately."
-    },
-    {
       question: "Where is the event taking place?",
       answer: "The event is taking place at a premium, highly curated venue in Kolkata. The exact location details will be shared exclusively with selected participants upon approval."
     },
@@ -21,7 +17,7 @@ export const FAQSection: React.FC = () => {
     },
     {
       question: "What if I am not selected for this cohort?",
-      answer: "We curate our circles very carefully to ensure maximum synergy and value for all participants. If you are not selected this time, your ₹100 application fee will be fully refunded, and you will be prioritized for our upcoming events."
+      answer: "We curate our circles very carefully to ensure maximum synergy and value for all participants. If you are not selected this time, you will be prioritized for our upcoming events."
     },
     {
       question: "What if I have other questions?",
