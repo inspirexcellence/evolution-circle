@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 
 export const FirstHeroSection: React.FC = () => {
@@ -41,127 +42,125 @@ export const FirstHeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative w-full bg-[#EDE7DB] text-[#1A3B2F] py-12 lg:py-16 flex flex-col items-center justify-center overflow-hidden">
+    <section className="relative w-full text-[#1A3B2F] flex flex-col overflow-hidden bg-[#EDE7DB]">
       
       {/* ═══════════════════════════════════════════════════════════ */}
-      {/* LIGHT PREMIUM BACKGROUND EFFECTS */}
+      {/* FULL-SIZE BACKGROUND IMAGE HERO CONTAINER */}
       {/* ═══════════════════════════════════════════════════════════ */}
-      <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[120%] max-w-[1200px] h-[600px] bg-[radial-gradient(ellipse_at_center,rgba(138,107,50,0.08)_0%,rgba(237,231,219,0)_70%)] pointer-events-none" />
-      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 pointer-events-none mix-blend-multiply" />
-
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16">
+      <div className="relative w-full min-h-[100vh] lg:min-h-[95vh] flex flex-col justify-center bg-[#EDE7DB]">
         
-        {/* ═══════════════════════════════════════════════════════════ */}
-        {/* HIGHLY ENGAGING TOP SECTION */}
-        {/* ═══════════════════════════════════════════════════════════ */}
-        <div className="relative w-full flex flex-col items-center justify-center text-center mt-0 mb-10 lg:mb-12">
-          
-          {/* Urgency Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-8 relative z-20"
-          >
-            <div className="relative overflow-hidden px-6 py-2.5 bg-gradient-to-r from-[#1A3B2F] to-[#2D3D35] text-[#EDE7DB] font-bold uppercase tracking-widest text-[11px] sm:text-[13px] rounded-full shadow-lg border border-[#8A6B32]/30 flex items-center gap-3">
-              {/* Shimmer Effect */}
-              <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent w-full h-full pointer-events-none" style={{ transform: "skewX(-20deg)" }} />
-              
-              <span className="relative z-10 w-2 h-2 rounded-full bg-[#8A6B32] animate-pulse"></span>
-              <span className="relative z-10">
-                Application Closing Date : August 30<sup className="text-[8px] sm:text-[10px]">TH </sup> 2026
-              </span>
-            </div>
-          </motion.div>
-          
-          {/* Subtle Floating Background Elements to fill empty space */}
-          <motion.div 
-            animate={{ rotate: 360 }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            className="absolute -left-10 lg:left-10 top-4 w-28 h-28 opacity-20 hidden md:flex items-center justify-center pointer-events-none"
-          >
-            <svg viewBox="0 0 100 100" className="w-full h-full text-[#8A6B32] fill-current">
-              <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
-              <text fontSize="11" letterSpacing="5" fontWeight="bold">
-                <textPath href="#circlePath" startOffset="0%">
-                  {"INSPIRE EXCELLENCE ✦"}
-                </textPath>
-              </text>
-            </svg>
-          </motion.div>
-
-          <motion.div 
-            animate={{ rotate: -360 }}
-            transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-            className="absolute -right-10 lg:right-10 top-10 w-20 h-20 opacity-[0.15] hidden md:flex items-center justify-center pointer-events-none"
-          >
-            {/* Elegant 8-pointed star */}
-            <svg viewBox="0 0 24 24" className="w-full h-full text-[#1A3B2F] fill-current">
-              <path d="M12 0l2 9 9 2-9 2-2 9-2-9-9-2 9-2z"/>
-            </svg>
-          </motion.div>
-
-          {/* Brand Header as an Elegant Pill Badge */}
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-8 relative group"
-          >
-            <div className="px-6 py-2 rounded-full border border-[#1A3B2F]/15 bg-white/40 backdrop-blur-sm shadow-[0_4px_20px_rgba(26,59,47,0.05)] hover:border-[#8A6B32]/40 hover:bg-white/60 transition-all duration-500 cursor-default">
-              <p className="text-[11px] sm:text-[13px] font-bold uppercase tracking-[0.4em] text-[#1A3B2F] mb-0.5">
-                INSPIRE EXCELLENCE
-              </p>
-              <p className="text-[8px] sm:text-[9px] font-semibold uppercase tracking-[0.35em] text-[#8A6B32]">
-                ACCELERATING HUMAN EVOLUTION
-              </p>
-            </div>
-            {/* Vertical connector line */}
-            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[1px] h-6 bg-gradient-to-b from-[#1A3B2F]/20 to-transparent"></div>
-          </motion.div>
-
-          {/* Massive Cinematic Heading */}
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="relative z-10"
-          >
-            {/* Decorative Top Accent */}
-            <div className="flex items-center justify-center gap-4 mb-3">
-              <div className="w-12 h-[1px] bg-[#8A6B32]/40"></div>
-              <span className="text-[14px] sm:text-[16px] tracking-[0.4em] text-[#8A6B32] font-medium uppercase">
-                The Reality
-              </span>
-              <div className="w-12 h-[1px] bg-[#8A6B32]/40"></div>
-            </div>
-
-            <h2 className="font-serif uppercase flex flex-col items-center justify-center leading-[1.0] relative">
-              <span className="text-[18px] sm:text-[22px] md:text-[28px] tracking-[0.2em] text-[#2D3D35] font-light mb-1">
-                YOU MAY BE READY FOR
-              </span>
-              
-              <div className="relative">
-                {/* Background Shadow Text for Depth */}
-                <span className="absolute top-1 left-1 sm:top-2 sm:left-2 text-[32px] sm:text-[46px] md:text-[60px] lg:text-[76px] font-bold tracking-[-0.04em] text-[#1A3B2F]/5 select-none pointer-events-none w-full text-center whitespace-nowrap">
-                  YOUR NEXT EVOLUTION
-                </span>
-                <span className="text-[32px] sm:text-[46px] md:text-[60px] lg:text-[76px] font-bold tracking-[-0.04em] text-[#1A3B2F] relative z-10 drop-shadow-sm whitespace-nowrap">
-                  YOUR NEXT EVOLUTION
-                </span>
-              </div>
-              
-              <div className="flex items-center gap-4 mt-1 md:mt-2">
-                <div className="hidden md:block w-16 h-[2px] bg-[#8A6B32]/30"></div>
-                <span className="text-[36px] sm:text-[50px] md:text-[64px] lg:text-[80px] font-bold tracking-[-0.02em] text-[#8A6B32] italic" style={{fontVariant: 'small-caps'}}>
-                  IF...
-                </span>
-                <div className="hidden md:block w-16 h-[2px] bg-[#8A6B32]/30"></div>
-              </div>
-            </h2>
-          </motion.div>
+        {/* Background Image Container */}
+        <div className="absolute inset-0 pointer-events-none border-b border-[#8A6B32]/30">
+          <Image 
+            src="/extra/CT_08172016_0576_color-copyyy.jpg"
+            alt="Prerona Roy"
+            fill
+            className="object-cover object-[80%_top] md:object-right-top lg:object-center"
+            sizes="100vw"
+            priority
+          />
+          {/* Subtle dark gradient for text readability without washing out the image */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/50 to-transparent lg:from-black/60 lg:via-black/20" />
+          {/* Extra bottom gradient for mobile to ground it if needed */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60 lg:hidden" />
         </div>
+
+        {/* ═══════════════════════════════════════════════════════════ */}
+        {/* PREMIUM HERO HEADER TEXT */}
+        {/* ═══════════════════════════════════════════════════════════ */}
+        {/* Added top padding for mobile to clear the navbar and bottom padding to clear floating buttons */}
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-16 pt-24 pb-32 lg:pt-12 lg:pb-24 flex flex-col h-full min-h-[100vh] lg:min-h-0 lg:justify-center">
+          
+          <div className="relative w-full h-full flex flex-col flex-1">
+            
+            {/* Urgency Badge — Top on Mobile, Centered Above on Desktop */}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="mt-0 mb-auto lg:mt-auto lg:mb-20 flex justify-center w-full z-20 px-2 sm:px-0"
+            >
+              <div className="relative overflow-hidden px-3 py-2 sm:py-2.5 sm:px-5 lg:px-6 bg-gradient-to-r from-[#8A6B32] to-[#D4AF37] text-[#1A3B2F] font-bold uppercase tracking-wider lg:tracking-widest text-[8px] min-[375px]:text-[9px] min-[420px]:text-[10px] sm:text-[13px] rounded-full shadow-lg border border-[#D4AF37]/50 flex items-center justify-center gap-2 lg:gap-3 text-center mx-auto max-w-full">
+                <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/40 to-transparent w-full h-full pointer-events-none" style={{ transform: "skewX(-20deg)" }} />
+                <span className="relative z-10 w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full bg-[#EDE7DB] animate-pulse shrink-0"></span>
+                <span className="relative z-10">
+                  Application Closing Date : September 05<sup className="text-[6px] sm:text-[10px]">TH </sup> 2026
+                </span>
+              </div>
+            </motion.div>
+
+            {/* Left Column: All Text Content */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="max-w-[850px] flex flex-col items-start text-left pt-4 lg:pt-16 mt-auto mb-0 lg:mt-0"
+            >
+              {/* Brand Pill - Made Bigger with more margin below */}
+              <div className="mb-6 lg:mb-16 relative group inline-block">
+                <div className="px-6 py-3 lg:px-8 lg:py-3.5 rounded-full border border-white/20 bg-black/40 lg:bg-black/30 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.1)] hover:bg-black/50 transition-all duration-500 cursor-default">
+                  <p className="text-[11px] sm:text-[16px] font-bold uppercase tracking-[0.4em] text-[#EDE7DB] mb-1">
+                    INSPIRE EXCELLENCE
+                  </p>
+                  <p className="text-[8px] sm:text-[11px] font-semibold uppercase tracking-[0.35em] text-[#D4AF37]">
+                    ACCELERATING HUMAN EVOLUTION
+                  </p>
+                </div>
+              </div>
+
+              {/* Decorative Top Accent */}
+              <div className="flex items-center gap-3 lg:gap-4 mb-3 lg:mb-4 w-full">
+                <span className="text-[12px] sm:text-[15px] lg:text-[17px] tracking-[0.4em] text-[#D4AF37] font-medium uppercase drop-shadow-md">
+                  The Reality
+                </span>
+                <div className="w-10 lg:w-16 h-[1px] bg-[#D4AF37]/60"></div>
+              </div>
+
+              {/* Main Heading */}
+              <h2 className="font-serif uppercase flex flex-col items-start leading-[1.05] relative w-full mb-6 lg:mb-6">
+                <span className="text-[14px] sm:text-[20px] md:text-[24px] lg:text-[28px] tracking-[0.2em] text-[#EDE7DB] font-light mb-2 drop-shadow-md">
+                  YOU MAY BE READY FOR
+                </span>
+                
+                <span className="text-[38px] sm:text-[56px] md:text-[68px] lg:text-[80px] xl:text-[96px] font-bold tracking-[-0.04em] text-white relative z-10 drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)] leading-[0.92] my-1">
+                  YOUR NEXT<br />EVOLUTION
+                </span>
+                
+                <div className="flex items-center justify-start gap-3 lg:gap-5 mt-2 w-full">
+                  <div className="w-8 lg:w-20 h-[2px] bg-[#D4AF37]/60"></div>
+                  <span className="text-[40px] sm:text-[60px] md:text-[72px] lg:text-[84px] font-bold tracking-[-0.02em] text-[#D4AF37] italic drop-shadow-md" style={{fontVariant: 'small-caps'}}>
+                    IF...
+                  </span>
+                  <div className="w-8 lg:w-20 h-[2px] bg-[#D4AF37]/60"></div>
+                </div>
+              </h2>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Decorative rotating text ring positioned subtly on the right */}
+        <motion.div 
+          animate={{ rotate: 360 }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+          className="absolute right-10 lg:right-24 top-1/4 w-32 h-32 opacity-20 hidden lg:flex items-center justify-center pointer-events-none z-10"
+        >
+          <svg viewBox="0 0 100 100" className="w-full h-full text-white fill-current drop-shadow-lg">
+            <path id="heroCirclePath2" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+            <text fontSize="11" letterSpacing="5" fontWeight="bold">
+              <textPath href="#heroCirclePath2" startOffset="0%">
+                {"INSPIRE EXCELLENCE ✦"}
+              </textPath>
+            </text>
+          </svg>
+        </motion.div>
+      </div>
+
+      {/* ═══════════════════════════════════════════════════════════ */}
+      {/* 4 LUXURY TALL CARDS SECTION (Begins on cream background) */}
+      {/* ═══════════════════════════════════════════════════════════ */}
+      <div className="relative z-10 w-full bg-[#EDE7DB] pt-12 pb-16 px-6 sm:px-10 lg:px-16 flex flex-col items-center">
+        <div className="w-full max-w-[1400px] mx-auto">
 
         {/* ═══════════════════════════════════════════════════════════ */}
         {/* 4 LUXURY TALL CARDS */}
@@ -233,6 +232,7 @@ export const FirstHeroSection: React.FC = () => {
           </div>
         </motion.div>
 
+        </div>
       </div>
     </section>
   );

@@ -40,20 +40,6 @@ export const InvestmentSection: React.FC = () => {
 
           <div className="h-[1px] w-[80%] mx-auto bg-[#1A3B2F]/15 my-5" />
 
-          <div>
-            <p className="text-[12px] sm:text-[13px] font-bold uppercase tracking-widest text-[#1A3B2F] mb-2">
-              APPLICATION FEE
-            </p>
-            <div className="font-serif text-[38px] sm:text-[44px] leading-none text-[#1A3B2F] mb-2 font-medium">
-              ₹100
-            </div>
-            <p className="text-[13px] sm:text-[14px] text-[#2D3D35] font-serif italic mt-1">
-              Fully refunded if not selected.
-            </p>
-          </div>
-
-          <div className="h-[1px] w-[80%] mx-auto bg-[#1A3B2F]/15 my-5" />
-
           <div className="text-left px-2 sm:px-4 mb-2 mt-auto">
             <p className="text-[13px] sm:text-[14px] font-bold uppercase tracking-widest text-[#8A6B32] mb-5 text-center">
               SELECTION PROCESS

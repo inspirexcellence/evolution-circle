@@ -24,21 +24,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
 
-  // Load Razorpay Script
-  useEffect(() => {
-    if (isOpen) {
-      const script = document.createElement("script");
-      script.src = "https://checkout.razorpay.com/v1/checkout.js";
-      script.async = true;
-      document.body.appendChild(script);
 
-      return () => {
-        if (document.body.contains(script)) {
-          document.body.removeChild(script);
-        }
-      };
-    }
-  }, [isOpen]);
 
   // Reset state when opened/closed
   useEffect(() => {
@@ -75,7 +61,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleRazorpayPayment = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isFormValid) return;
     
@@ -83,72 +69,26 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
     setError(null);
 
     try {
-      // 1. Create an Order on the backend
-      const res = await fetch("/api/razorpay/order", {
+      const emailData = new FormData();
+      emailData.append("access_key", "e65f40b5-1230-4d95-838c-b66543c6c2b1");
+      emailData.append("subject", `New Circle Application: ${formData.name}`);
+      emailData.append("from_name", "The Evolution Circle - Inspire Excellence");
+      emailData.append("Applicant_Name", formData.name);
+      emailData.append("Phone_Number", formData.phone);
+      emailData.append("Email_Address", formData.email);
+      emailData.append("Profession", formData.profession);
+      emailData.append("Company_Name", formData.companyName);
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          amount: 100, // ₹100 Application Fee
-          ...formData,
-        }),
+        body: emailData
       });
 
-      const order = await res.json();
-
-      if (!res.ok) {
-        throw new Error(order.details || order.error || "Failed to create order");
+      if (!response.ok) {
+        throw new Error("Failed to submit application. Please try again later.");
       }
 
-      // 2. Open Razorpay Checkout Window
-      const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, // Your Public Key
-        amount: order.amount,
-        currency: order.currency,
-        name: "Inspire Excellence",
-        description: "Application Fee for The Evolution Circle",
-        order_id: order.id,
-        handler: async function (response: any) {
-          // Immediately show success to prevent form flash while email sends
-          setSuccess(true);
-          
-          // Success callback - Send email notification directly from browser to bypass Web3Forms server blocks
-          const emailData = new FormData();
-          emailData.append("access_key", "e65f40b5-1230-4d95-838c-b66543c6c2b1");
-          emailData.append("subject", `New Circle Application: ${formData.name}`);
-          emailData.append("from_name", "The Evolution Circle - Inspire Excellence");
-          emailData.append("Applicant_Name", formData.name);
-          emailData.append("Phone_Number", formData.phone);
-          emailData.append("Email_Address", formData.email);
-          emailData.append("Profession", formData.profession);
-          emailData.append("Company_Name", formData.companyName);
-          emailData.append("Payment_Method", "Razorpay Gateway");
-          emailData.append("Payment_ID", response.razorpay_payment_id);
-
-          try {
-            await fetch("https://api.web3forms.com/submit", {
-              method: "POST",
-              body: emailData
-            });
-          } catch (emailErr) {
-            console.error("Email send failed, but payment succeeded", emailErr);
-          }
-        },
-        prefill: {
-          name: formData.name,
-          email: formData.email,
-          contact: formData.phone,
-        },
-        theme: {
-          color: "#1A3B2F",
-        },
-      };
-
-      const razorpayInstance = new (window as any).Razorpay(options);
-      razorpayInstance.on("payment.failed", function (response: any) {
-        setError(`Payment failed: ${response.error.description}`);
-      });
-
-      razorpayInstance.open();
+      setSuccess(true);
     } catch (err: any) {
       console.error(err);
       setError(err.message || "An unexpected error occurred. Please try again.");
@@ -178,7 +118,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
               Application Received
             </h3>
             <p className="text-[#2D3D35] mb-6">
-              Thank you for applying. We have received your details and payment information.
+              Thank you for applying. We have received your details and will be in touch soon.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-2">
               <a
@@ -211,7 +151,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
                 </div>
               )}
 
-              <form onSubmit={handleRazorpayPayment} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[12px] font-bold uppercase tracking-wider text-[#1A3B2F] mb-1">
@@ -293,7 +233,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
                     disabled={loading || !isFormValid}
                     className="w-full bg-[#0E2823] text-[#C5A44E] font-serif font-bold uppercase tracking-widest py-3.5 rounded-lg hover:bg-[#133731] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg"
                   >
-                    {loading ? "Processing..." : "Pay ₹100 via Razorpay"}
+                    {loading ? "Processing..." : "Submit Application"}
                   </button>
 
                 </div>

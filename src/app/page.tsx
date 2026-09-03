@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 
 import { FirstHeroSection } from "@/sections/FirstHeroSection";
+import { GallerySection } from "@/sections/GallerySection";
 import { SecondHeroSection } from "@/sections/SecondHeroSection";
 import { WhyDifferentSection } from "@/sections/WhyDifferentSection";
 import { TargetAudienceAndUnlockSection } from "@/sections/TargetAudienceAndUnlockSection";
@@ -16,7 +17,7 @@ import { ApplicationModal } from "@/components/ApplicationModal";
 import { CuratedExperienceCard } from "@/sections/CuratedExperienceCard";
 import { FAQSection } from "@/sections/FAQSection";
 import { TrustedBySection } from "@/sections/TrustedBySection";
-import { TestimonialSection } from "@/sections/TestimonialSection";
+import { CombinedTestimonialSection } from "@/sections/CombinedTestimonialSection";
 
 export default function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -37,12 +38,8 @@ export default function Home() {
       {/* Trusted By Placeholder */}
       <TrustedBySection />
 
-
-      
-      {/* Testimonials Video */}
-      <TestimonialSection />
-
-      
+      {/* Combined Video & Written Testimonials */}
+      <CombinedTestimonialSection />
 
       {/* Main 3-Column Content Section */}
       <section className="py-12 md:py-16 bg-[#EDE7DB]">
@@ -80,6 +77,9 @@ export default function Home() {
 
       {/* Why This Circle Is Different + Quote & Event Metadata */}
       <WhyDifferentSection />
+
+      {/* Gallery Section */}
+      <GallerySection />
 
       {/* FAQ Section */}
       <FAQSection />
