@@ -1,12 +1,44 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SITE_CONTENT } from "@/constants/content";
 import { ApplicationModal } from "@/components/ApplicationModal";
 
 export const InvestmentSection: React.FC = () => {
   const { investment } = SITE_CONTENT;
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(72 * 60 * 60); // 72 hours
+  const [isClient, setIsClient] = useState(false); // To avoid hydration mismatch on first render
+
+  useEffect(() => {
+    setIsClient(true);
+    const stored = localStorage.getItem("ahe_countdown_v3");
+    if (stored) {
+      const remaining = Math.max(0, Math.floor((parseInt(stored) - Date.now()) / 1000));
+      setTimeLeft(remaining);
+    } else {
+      localStorage.setItem("ahe_countdown_v3", (Date.now() + 72 * 60 * 60 * 1000).toString());
+    }
+
+    const timer = setInterval(() => {
+      setTimeLeft(prev => prev > 0 ? prev - 1 : 0);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formatTime = (seconds: number) => {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+    return {
+      hours: h.toString().padStart(2, "0"),
+      minutes: m.toString().padStart(2, "0"),
+      seconds: s.toString().padStart(2, "0")
+    };
+  };
+
+  const time = formatTime(timeLeft);
+  const isExpired = isClient && timeLeft === 0;
 
   return (
     <>
@@ -19,14 +51,49 @@ export const InvestmentSection: React.FC = () => {
         </h3>
 
         <div className="space-y-6 flex-grow flex flex-col justify-center">
-          <div>
-            <p className="text-[12px] sm:text-[13px] font-bold uppercase tracking-widest text-[#1A3B2F] mb-1.5">
+          <div className="flex flex-col items-center">
+            <p className="text-[12px] sm:text-[13px] font-bold uppercase tracking-widest text-[#1A3B2F] mb-3">
               TOTAL INVESTMENT
             </p>
-            <div className="font-serif text-[50px] sm:text-[60px] leading-none text-[#1A3B2F] mb-3 font-medium">
-              ₹7,999
-            </div>
-            <p className="text-[12px] sm:text-[13px] text-[#2D3D35] font-medium px-4 leading-relaxed">
+            
+            {!isExpired ? (
+              <>
+                <div className="flex items-center justify-center gap-3 mb-1">
+                  <span className="text-[20px] sm:text-[24px] font-bold text-[#1A3B2F]/40 line-through decoration-2">₹9,999</span>
+                  <span className="px-2 py-0.5 bg-[#8A6B32]/10 text-[#8A6B32] text-[10px] font-bold uppercase tracking-widest rounded border border-[#8A6B32]/20">Save ₹2,000</span>
+                </div>
+                
+                <div className="font-serif text-[50px] sm:text-[60px] leading-none text-[#1A3B2F] mb-4 font-medium">
+                  ₹7,999
+                </div>
+
+                {/* Countdown Timer */}
+                {isClient && (
+                  <div className="mb-5 bg-gradient-to-r from-[#1A3B2F] to-[#2D3D35] px-5 py-3 rounded-xl shadow-lg border border-[#8A6B32]/30 flex flex-col items-center relative overflow-hidden w-full max-w-[280px]">
+                     <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#C5A44E] to-transparent"></div>
+                     <span className="text-[9px] uppercase tracking-widest text-[#C5A44E] font-bold mb-1.5 opacity-90">Special Price Ends In</span>
+                     <div className="flex items-baseline gap-1.5 text-white font-mono font-bold text-[18px] sm:text-[20px] tracking-wider">
+                       <span className="bg-black/30 px-1.5 py-0.5 rounded">{time.hours}</span><span className="text-[11px] text-white/50">h</span>
+                       <span className="text-[#C5A44E] animate-pulse">:</span>
+                       <span className="bg-black/30 px-1.5 py-0.5 rounded">{time.minutes}</span><span className="text-[11px] text-white/50">m</span>
+                       <span className="text-[#C5A44E] animate-pulse">:</span>
+                       <span className="bg-black/30 px-1.5 py-0.5 rounded">{time.seconds}</span><span className="text-[11px] text-white/50">s</span>
+                     </div>
+                  </div>
+                )}
+              </>
+            ) : (
+              <>
+                <div className="font-serif text-[50px] sm:text-[60px] leading-none text-[#1A3B2F] mb-4 mt-2 font-medium">
+                  ₹9,999
+                </div>
+                <div className="mb-5 bg-black/5 px-5 py-3 rounded-xl border border-black/10 flex flex-col items-center">
+                  <span className="text-[11px] uppercase tracking-widest text-[#1A3B2F]/60 font-bold">Early Bird Offer Expired</span>
+                </div>
+              </>
+            )}
+
+            <p className="text-[12px] sm:text-[13px] text-[#2D3D35] font-medium px-4 leading-relaxed mt-2">
               (Inclusive of all session materials, workbook, refreshments & integration tools)
             </p>
             <div className="mt-5 inline-flex items-center gap-2 bg-[#8A6B32]/10 px-4 py-2 rounded-full border border-[#8A6B32]/20">
