@@ -84,7 +84,7 @@ export const FirstHeroSection: React.FC = () => {
                 <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/40 to-transparent w-full h-full pointer-events-none" style={{ transform: "skewX(-20deg)" }} />
                 <span className="relative z-10 w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full bg-[#EDE7DB] animate-pulse shrink-0"></span>
                 <span className="relative z-10">
-                  Application Closing Date : September 05<sup className="text-[6px] sm:text-[10px]">TH </sup> 2026
+                  Application Closing Date : September 20<sup className="text-[6px] sm:text-[10px]">TH </sup> 2026
                 </span>
               </div>
             </motion.div>

@@ -56,7 +56,7 @@ export const SITE_CONTENT = {
     },
     eventMeta: {
       date: "12TH SEPTEMBER 2026",
-      dayTime: "SATURDAY | 9:30 AM – 6:00 PM",
+      dayTime: "FRIDAY | 9:30 AM – 6:00 PM",
       tagline: "ONE DAY. ONE DECISION. A LIFETIME OF IMPACT.",
     },
     facilitatorMeta: {

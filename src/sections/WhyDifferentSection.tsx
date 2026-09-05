@@ -99,11 +99,11 @@ export const WhyDifferentSection: React.FC = () => {
                 <div className="h-[1px] w-[80%] bg-[#C5A44E]/30 mb-4 hidden md:block" />
                 <div className="flex items-start mb-2 whitespace-nowrap">
                   <div className="font-serif text-[#E8E2D4] font-semibold leading-none flex items-start">
-                    <span className="text-[24px] sm:text-[28px]">12</span>
-                    <span className="text-[11px] sm:text-[13px] font-sans mt-[3px] ml-[2px] tracking-widest">TH</span>
+                    <span className="text-[24px] sm:text-[28px]">02</span>
+                    <span className="text-[11px] sm:text-[13px] font-sans mt-[3px] ml-[2px] tracking-widest">ND</span>
                   </div>
                   <div className="font-serif text-[17px] sm:text-[19px] text-[#E8E2D4] uppercase tracking-wider font-semibold leading-none mt-[7px] sm:mt-[9px] ml-2">
-                    SEPTEMBER 2026
+                    OCTOBER 2026
                   </div>
                 </div>
                 <div className="text-[10px] sm:text-[11px] uppercase tracking-wider text-[#C5A44E] font-semibold mb-2 whitespace-nowrap">
