@@ -12,17 +12,16 @@ export const InvestmentSection: React.FC = () => {
 
   useEffect(() => {
     setIsClient(true);
-    const stored = localStorage.getItem("ahe_countdown_v3");
-    if (stored) {
-      const remaining = Math.max(0, Math.floor((parseInt(stored) - Date.now()) / 1000));
-      setTimeLeft(remaining);
-    } else {
-      localStorage.setItem("ahe_countdown_v3", (Date.now() + 72 * 60 * 60 * 1000).toString());
-    }
+    // Globally synchronized target date: exactly 72 hours from now
+    const targetDate = new Date("2026-09-08T12:33:16+05:30").getTime();
 
-    const timer = setInterval(() => {
-      setTimeLeft(prev => prev > 0 ? prev - 1 : 0);
-    }, 1000);
+    const updateTimer = () => {
+      const remaining = Math.max(0, Math.floor((targetDate - Date.now()) / 1000));
+      setTimeLeft(remaining);
+    };
+
+    updateTimer();
+    const timer = setInterval(updateTimer, 1000);
     return () => clearInterval(timer);
   }, []);
 
