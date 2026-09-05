@@ -12,8 +12,18 @@ export const InvestmentSection: React.FC = () => {
 
   useEffect(() => {
     setIsClient(true);
-    // Globally synchronized target date: exactly 72 hours from now
-    const targetDate = new Date("2026-09-08T12:33:16+05:30").getTime();
+    
+    // Personalized Evergreen Timer Logic
+    const STORAGE_KEY = "ahe_countdown_v4";
+    let targetDate: number;
+    
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      targetDate = parseInt(stored, 10);
+    } else {
+      targetDate = Date.now() + 72 * 60 * 60 * 1000;
+      localStorage.setItem(STORAGE_KEY, targetDate.toString());
+    }
 
     const updateTimer = () => {
       const remaining = Math.max(0, Math.floor((targetDate - Date.now()) / 1000));
