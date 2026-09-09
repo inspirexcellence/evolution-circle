@@ -23,20 +23,7 @@ export const SecondHeroSection: React.FC = () => {
           className="relative z-10 w-full lg:w-[55%] xl:w-[50%] flex flex-col justify-center px-6 sm:px-10 lg:px-16 py-10 lg:py-14"
           style={{ backgroundColor: "transparent" }}
         >
-          {/* Brand Header */}
-          <div className="mb-8">
-            <p
-              className="text-[15px] sm:text-[16px] font-semibold uppercase tracking-[0.35em]"
-              style={{ fontFamily: "'Inter', sans-serif", color: "#1A3B2F" }}
-            >
-              {brand.name}
-            </p>
-            <p
-              className="text-[12px] sm:text-[13px] font-medium uppercase tracking-[0.3em] mt-1 text-[#2D3D35]"
-            >
-              {brand.tagline}
-            </p>
-          </div>
+          {/* Brand Header removed per user request */}
 
           {/* Subtitle with separator */}
           <div className="mb-8">
