@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 export const Footer: React.FC = () => {
   return (
@@ -15,9 +16,9 @@ export const Footer: React.FC = () => {
         </div>
 
         <div className="flex items-center space-x-6 text-ivory/60">
-          <a href="#" className="hover:text-gold-400 transition-colors">
+          <Link href="/privacy-policy" className="hover:text-gold-400 transition-colors">
             Privacy Policy
-          </a>
+          </Link>
           <a href="#" className="hover:text-gold-400 transition-colors">
             Terms of Service
           </a>
