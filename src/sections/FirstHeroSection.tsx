@@ -127,9 +127,9 @@ export const FirstHeroSection: React.FC = () => {
             >
               <div className="relative overflow-hidden px-3 py-2 sm:py-2.5 sm:px-5 lg:px-6 bg-gradient-to-r from-[#8A6B32] to-[#D4AF37] text-[#1A3B2F] font-bold uppercase tracking-wider lg:tracking-widest text-[8px] min-[375px]:text-[9px] min-[420px]:text-[10px] sm:text-[13px] rounded-full shadow-lg border border-[#D4AF37]/50 flex items-center justify-center gap-2 lg:gap-3 text-center mx-auto max-w-full">
                 <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/40 to-transparent w-full h-full pointer-events-none" style={{ transform: "skewX(-20deg)" }} />
-                <span className="relative z-10 w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full bg-[#EDE7DB] animate-pulse shrink-0"></span>
+                <span className="relative z-10 w-1.5 h-1.5 lg:w-2 lg:h-2 rounded-full bg-red-600 animate-pulse shrink-0"></span>
                 <span className="relative z-10">
-                  Application Closing Date : September 25<sup className="text-[6px] sm:text-[10px]">TH </sup> 2026
+                  REGISTRATION CLOSED FOR 2 OCT SLOT. APPLY FOR NEXT BATCH.
                 </span>
               </div>
             </motion.div>

@@ -142,7 +142,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
             {/* Main Form */}
             <div className="w-full p-6 md:p-8 bg-white/40">
               <h3 className="font-serif text-[18px] md:text-[20px] font-bold uppercase tracking-widest text-[#1A3B2F] mb-6">
-                Apply for The Circle
+                Apply for The Circle (Next Slot)
               </h3>
 
               {error && (
