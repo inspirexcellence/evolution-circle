@@ -61,6 +61,16 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const loadRazorpay = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => resolve(true);
+      script.onerror = () => resolve(false);
+      document.body.appendChild(script);
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isFormValid) return;
@@ -69,30 +79,105 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
     setError(null);
 
     try {
-      const emailData = new FormData();
-      emailData.append("access_key", "e65f40b5-1230-4d95-838c-b66543c6c2b1");
-      emailData.append("subject", `New Circle Application: ${formData.name}`);
-      emailData.append("from_name", "The Evolution Circle - Inspire Excellence");
-      emailData.append("Applicant_Name", formData.name);
-      emailData.append("Phone_Number", formData.phone);
-      emailData.append("Email_Address", formData.email);
-      emailData.append("Profession", formData.profession);
-      emailData.append("Company_Name", formData.companyName);
-
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: emailData
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to submit application. Please try again later.");
+      const res = await loadRazorpay();
+      if (!res) {
+        throw new Error("Razorpay SDK failed to load. Please check your internet connection.");
       }
 
-      setSuccess(true);
+      // 1. Create order
+      const orderRes = await fetch("/api/razorpay/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          amount: 7999,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          profession: formData.profession,
+          companyName: formData.companyName
+        }),
+      });
+
+      const orderData = await orderRes.json();
+      if (!orderRes.ok) {
+        throw new Error(orderData.error || "Failed to create order");
+      }
+
+      // 2. Initialize Razorpay popup
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        amount: orderData.amount,
+        currency: orderData.currency,
+        name: "Inspire Excellence",
+        description: "The Evolution Circle Application",
+        order_id: orderData.id,
+        handler: async function (response: any) {
+          try {
+            setLoading(true); // Keep loading state during verification
+            const verifyRes = await fetch("/api/razorpay/verify", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_signature: response.razorpay_signature,
+              }),
+            });
+            const verifyData = await verifyRes.json();
+            
+            if (verifyData.success) {
+               // Send email via web3forms
+               const emailData = new FormData();
+               emailData.append("access_key", "e65f40b5-1230-4d95-838c-b66543c6c2b1");
+               emailData.append("subject", `New Circle Application Paid: ${formData.name}`);
+               emailData.append("from_name", "The Evolution Circle - Inspire Excellence");
+               emailData.append("Applicant_Name", formData.name);
+               emailData.append("Phone_Number", formData.phone);
+               emailData.append("Email_Address", formData.email);
+               emailData.append("Profession", formData.profession);
+               emailData.append("Company_Name", formData.companyName);
+               emailData.append("Payment_ID", response.razorpay_payment_id);
+               
+               await fetch("https://api.web3forms.com/submit", {
+                 method: "POST",
+                 body: emailData
+               });
+
+               setSuccess(true);
+            } else {
+               setError("Payment verification failed. Please contact support.");
+            }
+          } catch(err: any) {
+            setError("Something went wrong verifying the payment.");
+          } finally {
+            setLoading(false);
+          }
+        },
+        prefill: {
+          name: formData.name,
+          email: formData.email,
+          contact: formData.phone,
+        },
+        theme: {
+          color: "#0E2823",
+        },
+        modal: {
+          ondismiss: function() {
+            setLoading(false);
+          }
+        }
+      };
+
+      const paymentObject = new (window as any).Razorpay(options);
+      paymentObject.on('payment.failed', function (response: any) {
+         setError("Payment failed: " + response.error.description);
+         setLoading(false);
+      });
+      paymentObject.open();
+
     } catch (err: any) {
       console.error(err);
       setError(err.message || "An unexpected error occurred. Please try again.");
-    } finally {
       setLoading(false);
     }
   };
@@ -233,7 +318,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
                     disabled={loading || !isFormValid}
                     className="w-full bg-[#0E2823] text-[#C5A44E] font-serif font-bold uppercase tracking-widest py-3.5 rounded-lg hover:bg-[#133731] transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg"
                   >
-                    {loading ? "Processing..." : "Submit Application"}
+                    {loading ? "Processing..." : "Pay ₹7,999 & Apply"}
                   </button>
 
                 </div>
